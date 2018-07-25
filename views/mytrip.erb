@@ -1,0 +1,14 @@
+<h1>Suggested trip</h1>
+
+<h3><%= @locations.find_by(id: @random_loc).location_name %></h3>
+<% @random_acts.each do |activity_id| %>
+    <div class="box-content">
+        <img class="tiles" src="<%= Activity.find(activity_id).image_url%>" alt="">
+            <p> 
+                <a href="/activities/<%= Activity.find(activity_id).id%>"> 
+                    <%= Activity.find(activity_id).activity_name %> 
+                </a>, <%= Activity.find(activity_id).location_id %> 
+            </p>
+    </div>
+<% end %>
+

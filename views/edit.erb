@@ -1,0 +1,22 @@
+<h1>Edit activity</h1>
+
+<form action="/activities/<%= @activity.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+
+    <label for="">name</label>
+    <input type="text" name="name" value="<%= @activity.activity_name %>">
+
+    <label for="">image url</label>
+    <input type="text" name="image_url" value="<%= @activity.image_url%>">
+    
+    <label for="">location:</label>
+    <input type="text" name="location_name" value="<%= @location.location_name%>">
+
+    <label for="">summary:</label>
+    <input type="text" name="summary" value="<%= @activity.summary %>">
+
+    <label for="">link for more details:</label>
+    <input type="text" name="details" value="<%= @activity.details %>">
+
+    <button>post</button>
+</form>

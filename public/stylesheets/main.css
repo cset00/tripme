@@ -1,0 +1,44 @@
+* {
+    /* font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-family: 'IBM Plex Serif', serif; */
+}
+
+.container {
+
+}
+
+body {
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+.box-content {
+    width: 300px;
+    height: 300px;
+    border: solid 5px #5000FF;
+}
+
+.tiles {
+    width: 100%;
+    
+}
+
+h1 {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.icons {
+    width: 30px;
+}
+
+img {
+    width: 100%;
+}
+
+input {
+    display: block;
+}

@@ -1,0 +1,18 @@
+<h1>ACTIVITIES</h1>
+
+<div>
+    <a href="/activities/new">post new activity</a>
+</div>
+
+<div class="container">
+    <% @activities.each do |activity| %>
+        <div class="box-content">
+            <img class="tiles" src="<%= activity.image_url%>" alt="">
+            <p> 
+                <a href="/activities/<%= activity.id%>"> 
+                    <%= activity.activity_name %> 
+                </a>, <%= activity.location_id %> 
+            </p>
+        </div>
+    <% end %> 
+ </div>
