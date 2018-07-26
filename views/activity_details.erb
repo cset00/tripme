@@ -1,61 +1,77 @@
 <h1><%= @activity.activity_name %></h1>
 <h3><%= @location.location_name%> (~<%= @location.distance_fr_melb %> km from Melbourne)</h3>
 
-<div class="container">
+<div class="details-container">
     <div class="img-container">
-        <img src="<%= @activity.image_url %>" alt="">
-    </div>
-    <div>
-        <p>
-            like numbers & button,
-            comment button,
-            Add activity to trip button
-        </p>
-    </div>    
+        <img class="act-img" src="<%= @activity.image_url %>" alt="">
+        <div class="btns-left">
+        <%# ---comments count--- %>
+            <p class="grey"><%= @activity.comments.count %></p>
+            <div class="comments">
+            </div>
+            
+            <%# ---likes--- %>
+            <p class="grey"><%= @activity.likes.count %>
+                <% if @likes.count > 0 %>
+                    <form action="/likes" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="activity_id" value="<%= @activity.id %>">
+
+                        <button class="liked"></button>
+                    </form>            
+                <% else %>
+                    <form action="/likes" method="post">
+                        <input type="hidden" name="activity_id" value="<%= @activity.id %>">
+
+                        <button class="btn-like"></button>
+                    </form>
+                <% end %>
+            </p>
+        </div> 
+    </div>   
 
     <div class="text">
-        <p>text here</p>
-<%# ---edit / delete--- %>
-        <form action="/activities/<%= @activity.id %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <button>delete</button>
-        </form>
-
-        <a href="/activities/<%=@activity.id %>/edit">edit</a>
-
-<%# ---likes--- %>
-        <p><%= @activity.likes.count %> likes</p>
-        
-        <% if @likes.count > 0 %>
-            <form action="/likes" method="post">
+        <p> <%= @activity.summary %> </p>
+        <small>Posted on <%= DateTime.strptime("#{@activity.time_posted}",'%s') %></small>
+        <div class="btns">
+            <%# ---edit / delete--- %>
+            <div class="btn-edit">
+                <a href="/activities/<%=@activity.id %>/edit">edit</a>
+            </div>
+            
+            <form action="/activities/<%= @activity.id %>" method="post">
                 <input type="hidden" name="_method" value="delete">
-                <input type="hidden" name="activity_id" value="<%= @activity.id %>">
-
-                <button>unlike</button>
-            </form>            
-        <% else %>
-            <form action="/likes" method="post">
-                <input type="hidden" name="activity_id" value="<%= @activity.id %>">
-
-                <button>like</button>
+                <button class="btn-delete">delete</button>
             </form>
-        <% end %>
-
-<%# ---comments--- %>
-        <form action="/comments" method="post">
-            <input type="hidden" name="activity_id" value="<%= @activity.id %>">
-            <label for="">content</label>
-            <textarea name="content"></textarea>
-            <button>post a comment</button>
-        </form>
-
-        <% @comments.each do |comment|  %>
-            <p><%=comment.content %></p>
-            <p>posted by <%= comment.user.username %> on <%= comment.time_posted %></p>
-        <% end %>
+        </div>
     </div>
 </div>
 
+            
+    
+<h4>Comments</h4>
+<%# ---comments--- %>
+    <div>
+        <% @comments.each do |comment|  %>
+            <p><%=comment.content %></p>
+            <small>posted by <%= comment.user.username %> on <%= comment.time_posted %></small>
+        <% end %>
+        
+        <p class="error"><%= @error_msg %></p>
+
+        <div class="center">
+            <form action="/comments" method="post">
+                <input type="hidden" name="activity_id" value="<%= @activity.id %>">
+                <%# <p><label for="">content:</label></p> %>
+                <textarea name="content"></textarea>
+                <button class="btn-submit2">post comment</button>
+            </form>
+        </div>
+
+        
+    </div>
 
 
-<h1>Related activities</h1>
+
+
+<%# <h1>Related activities</h1> %>

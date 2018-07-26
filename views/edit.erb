@@ -1,22 +1,25 @@
-<h1>Edit activity</h1>
-
-<form action="/activities/<%= @activity.id%>" method="post">
-    <input type="hidden" name="_method" value="put">
-
-    <label for="">name</label>
-    <input type="text" name="name" value="<%= @activity.activity_name %>">
-
-    <label for="">image url</label>
-    <input type="text" name="image_url" value="<%= @activity.image_url%>">
+<div class="hero-container2">    
     
-    <label for="">location:</label>
-    <input type="text" name="location_name" value="<%= @location.location_name%>">
+    <h1>Edit activity</h1>
 
-    <label for="">summary:</label>
-    <input type="text" name="summary" value="<%= @activity.summary %>">
+    <form action="/activities/<%= @activity.id%>" method="post">
+        <input type="hidden" name="_method" value="put">
 
-    <label for="">link for more details:</label>
-    <input type="text" name="details" value="<%= @activity.details %>">
+        <label for="">name</label>
+        <input type="text" name="activity_name" value="<%= @activity.activity_name %>">
 
-    <button>post</button>
-</form>
+        <label for="">image url</label>
+        <input type="text" name="image_url" value="<%= @activity.image_url%>">
+        
+        <label for="">location:</label>
+        <input type="text" name="location_name" value="<%= @location.location_name%>">
+
+        <label for="">summary:</label>
+        <input type="text" name="summary" value="<%= @activity.summary %>">
+
+        <label for="">link for more details:</label>
+        <input type="text" name="details" value="<%= @activity.details %>">
+
+        <button class="btn-submit">post</button>
+    </form>
+</div>

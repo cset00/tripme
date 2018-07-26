@@ -1,7 +1,18 @@
 <h1>ACTIVITIES</h1>
 
-<div>
-    <a href="/activities/new">post new activity</a>
+<div class="space-between">
+    <div class="btn-yellow">
+        <a href="/activities/new">post new activity</a>
+    </div>
+    <div class="sort-by">
+        <label for="">Sort by:</label>
+        <select name="sortby">
+            <option value="location">location</option>
+            <option value="popularity">popularity</option>
+            <option value="recency">most recent</option>
+            <option value="category">category</option>
+        </select>
+    </div>
 </div>
 
 <div class="container">
@@ -10,9 +21,13 @@
             <img class="tiles" src="<%= activity.image_url%>" alt="">
             <p> 
                 <a href="/activities/<%= activity.id%>"> 
-                    <%= activity.activity_name %> 
-                </a>, <%= activity.location_id %> 
+                    <%=  activity.activity_name %> 
+                </a>
             </p>
+            <p><%= @locations.find(activity.location_id).location_name %></p> 
+            
+            
+
         </div>
     <% end %> 
  </div>

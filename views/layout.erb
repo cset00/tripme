@@ -13,28 +13,31 @@
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="#">Featured trips</a></li>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">My trips</a></li>
+        <li><a href="/activities">All activities</a></li>
+        <li><a href="/mytrip">My trip</a></li>
       </ul>
     </nav>
-    <div class="icons">
-      <img src="/images/icons/user.png">
-      <%# if logged in, show: "logged in as.." and logout button %>
-      <%# if logged out, show login or sign up options %>
-    </div>
-    <div>
+    
+    <div class="user">
+      <div class="icons">
+        <img src="/images/icons/user.png">
+      </div>
       <% if logged_in? %>
         <p>
         logged in as <%= current_user.username %>
         </p>
         <form action="/session" method="post">
           <input type="hidden" name="_method" value="delete">
-          <button>logout</button>
+          <button class="btn-user">logout</button>
         </form>
       <% else %>
         <form action="/login" method="get">
-          <button>login</button>
+          <button class="btn-user">login</button>
         </form>
+        <form action="/signup" method="get">
+          <button class="btn-user">signup</button>
+        </form>
+
       <% end %>
     </div>
   </header>

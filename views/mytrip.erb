@@ -1,14 +1,22 @@
-<h1>Suggested trip</h1>
+<h1>My trip</h1>
 
-<h3><%= @locations.find_by(id: @random_loc).location_name %></h3>
-<% @random_acts.each do |activity_id| %>
-    <div class="box-content">
-        <img class="tiles" src="<%= Activity.find(activity_id).image_url%>" alt="">
+<h3><%= @locations.find(@location_id).location_name %></h3>
+
+<div class="container">
+    <% @activity_ids.each do |id| %>
+        <div class="box-content">
+            <img class="tiles" src="<%= @activities.find(id).image_url%>" alt="">
             <p> 
-                <a href="/activities/<%= Activity.find(activity_id).id%>"> 
-                    <%= Activity.find(activity_id).activity_name %> 
-                </a>, <%= Activity.find(activity_id).location_id %> 
+                <a href="/activities/<%= @activities.find(id).id%>"> 
+                    <%= @activities.find(id).activity_name %> 
+                </a>
             </p>
-    </div>
-<% end %>
+            <p></p><%= @locations.find(@activities.find(id).location_id).location_name %></p> 
+            <div class="btns">
+                <%# 'Add to Trip' button if trip doesn't already exist in trip%>
+                <%# if trip exists, then a 'Remove from Trip' button %>
+            </div>  
+        </div>
+    <% end %>
+</div>
 

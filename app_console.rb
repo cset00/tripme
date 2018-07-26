@@ -7,6 +7,6 @@ require_relative 'models/location'
 require_relative 'models/like'
 require_relative 'models/comment'
 # require_relative 'models/trip'
-# require_relative 'models/seed'
+require_relative 'models/seed'
 
-binding.pry
+# binding.pry

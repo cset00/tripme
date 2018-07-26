@@ -1,0 +1,23 @@
+<div class="hero-container2">
+    <h1>Sign up</h1>
+
+    <p class="error"><%= @error_msg %></p>
+
+    <form action="/signup" method="post">
+        
+        <label for="">username:</label>
+        <input type="username" name="username">
+
+        <label for="">email:</label>
+        <input type="email" name="email">
+
+        <label for="">password:</label>
+        <input type="password" name="password">
+
+        <%# <label for="">avatar:</label>
+        <input type="file" name="avatar" accept="image/*"> %>
+        
+
+        <button class="btn-user">sign up</button>
+    </form>
+</div>

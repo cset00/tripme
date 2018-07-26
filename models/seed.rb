@@ -1,59 +1,62 @@
-require 'active_record'
+require_relative '../db_config'
 require_relative 'activity'
 
 
 def seed_activities 
     activities = [
         {
-            activity_name: "D.O.C Mornington",
-            image_url: "/images/doc.jpg",
+            activity_name: "BLAHHH",
+            image_url: "/images/1000steps.jpeg",
             time_posted: Time.now,
-            summary: "D.O.C Mornington is a sister business of D.O.C. Carlton and Carlton Espresso. Based on Main Street, Mornington and comprising a pizza restaurant and mozzarella bar, gourmet deli and produce shop, D.O.C Mornington has swiftly become a new favourite with locals and visitors alike.",
-            details: "https://www.visitmorningtonpeninsula.org/ThingsToDo/FoodWine/ArtisanRetailers/tabid/318/View/2839/Default.aspx",
-            user_id: 1,
-            location_id: 1
-        },
-        {
-            activity_name: "Healesville Sanctuary",
-            image_url: "/images/healesville-sanctuary.jpg",
-            time_posted: Time.now,
-            summary: "Healesville Sanctuary, in the heart of the Yarra Valley, is world-renowned as the best place to see Australian wildlife in their natural habitat.",
-            details: "https://www.visitvictoria.com/regions/yarra-valley-and-dandenong-ranges/things-to-do/nature-and-wildlife/wildlife-and-zoos/healesville-sanctuary",
+            summary: "March your way up the steep, 1000 step-climb of the Kokoda Walk and experience a tiny sense of the exhaustion felt by the Australian soldiers following the Kokoda Trail in Papua New Guinea in World War II.",
+            details: "https://www.visitvictoria.com/regions/Yarra-Valley-and-Dandenong-Ranges/Things-to-do/Outdoor-activities/Walking-and-hiking/Kokoda-Memorial-Walk",
             user_id: 1,
             location_id: 2
         },
         {
-            activity_name: "Four Pillars Distillery",
-            image_url: "/images/four-pillars.jpeg",
+            activity_name: "TEST",
+            image_url: "/images/steavenson-falls.jpeg",
             time_posted: Time.now,
-            summary: "Four Pillars Gin is Australia's number one craft spirit. Since launch in 2013, Four Pillars gin's have received the highest accolades at spirit competitions around the world.",
-            details: "https://www.visitvictoria.com/regions/yarra-valley-and-dandenong-ranges/food-and-wine/breweries-and-distilleries/four-pillars-distillery#",
-            user_id: 1,
-            location_id: 2
-        },
-        {
-            activity_name: "Punt Road Winery",
-            image_url: "/images/punt-rd.jpeg",
-            time_posted: Time.now,
-            summary: "Welcome to Punt Road Winery. Everything that Punt Road Winery creates comes from the one patch of dirt. Ideas are born there, all fruit is grown there and everything that is made is crafted, bottled and shared on site.",
-            details: "https://www.visitvictoria.com/regions/yarra-valley-and-dandenong-ranges/food-and-wine/wineries/punt-road-winery",
+            summary: "Dozens of waterfalls are dotted throughout the Murrindindi region, each with a character and timeless beauty of its own, some more accessible than others. Well worth a visit is the renowned Stevenson Falls at Marysville.",
+            details: "https://www.visitvictoria.com/regions/Yarra-Valley-and-Dandenong-Ranges/Things-to-do/Nature-and-wildlife/Lakes-and-waterways/Steavenson-Falls.aspx",
             user_id: 1,
             location_id: 2
         }
+        # ,
+        # {
+        #     activity_name: "",
+        #     image_url: "/images/",
+        #     time_posted: Time.now,
+        #     summary: "",
+        #     details: "",
+        #     user_id: 1,
+        #     location_id:
+        # },
+        # {
+        #     activity_name: "",
+        #     image_url: "/images/",
+        #     time_posted: Time.now,
+        #     summary: "",
+        #     details: "",
+        #     user_id: 1,
+        #     location_id:
+        # }
     ]
 
     activities.each do |activity|
-        a = Activity.new
-        a.activity_name = activity[:activity_name],
-        a.image_url = activity[:image_url],
-        a.time_posted = Time.now,
+        a = Activity.new 
+        a.activity_name = activity[:activity_name]
+        a.image_url = activity[:image_url]
+        a.time_posted = Time.now
         a.summary = activity[:summary]
-        a.details = activity[:details],
-        a.user_id = activity[:user_id],
-        a.location_id = activity[:location_id]   
+        a.details = activity[:details]
+        a.user_id = activity[:user_id]
+        a.location_id = activity[:location_id]
         a.save
     end
 end
+
+seed_activities
 
 
 def seed_locations
