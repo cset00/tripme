@@ -1,6 +1,15 @@
-<h1>My trip</h1>
-
-<h3><%= @locations.find(@location_id).location_name %></h3>
+<div class="header2">    
+    <div>
+        <h1>My trip</h1>
+        <h3><%= @locations.find(@location_id).location_name %></h3>
+    </div>
+    <div class="btns">
+        <%# button to randomise %>
+        <form action="/randomtrip">
+            <button class="btn-try">more trips!</button>
+        </form>
+    </div>
+</div>
 
 <div class="container">
     <% @activity_ids.each do |id| %>
@@ -11,7 +20,7 @@
                     <%= @activities.find(id).activity_name %> 
                 </a>
             </p>
-            <p></p><%= @locations.find(@activities.find(id).location_id).location_name %></p> 
+            <p><%= @locations.find(@activities.find(id).location_id).location_name %></p> 
             <div class="btns">
                 <%# 'Add to Trip' button if trip doesn't already exist in trip%>
                 <%# if trip exists, then a 'Remove from Trip' button %>

@@ -1,6 +1,6 @@
      
 require 'sinatra'
-# require 'sinatra/reloader' # only reloads this file by default
+require 'sinatra/reloader' # only reloads this file by default
 # require 'pg'
 require 'pry'
 
@@ -31,6 +31,9 @@ helpers do
     conn.close
     return result
   end
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
 end
 
 get '/' do
@@ -39,34 +42,32 @@ get '/' do
 end
 
 get '/activities/new' do
+  redirect '/login' unless logged_in?
   erb :new
 end
-
 
 get '/activities' do
   @activities = Activity.all.order(:location_id)
   @locations = Location.all
+  @likes = Like.all
+  @comments = Comment.all
   erb :activities
-end
-
-get '/randomise' do
-  "Test"
-  #do i want a randomise function here?
-  
 end
 
 get '/activities/:id' do
   @activity = Activity.find(params[:id])
   @location = Location.find(@activity.location_id)
   @comments = @activity.comments
-  @likes = current_user.likes.where(activity_id: @activity.id)
+  @likes = Like.all
+  if logged_in?
+    @likes = current_user.likes.where(activity_id: @activity.id)
+  end
 
   erb :activity_details
 end
 
 post '/activities' do
   @locations = Location.all
-
   activity = Activity.new
   #from here could probably be put in helper. double check that activity_name is called the same.
   activity.activity_name = params[:activity_name]
@@ -100,7 +101,7 @@ put '/activities/:id' do
   @locations = Location.all
 
   @activity = Activity.find(params[:id])
-  #from here could probably be put in helper. double check that activity_name is called the same and check @ signs
+  #from here could probably be put in helper. double check that activity_name is called the same and check @ signs?
   @activity.activity_name = params[:activity_name]
   @activity.image_url = params[:image_url]
   @activity.location_id = @locations.find_by(location_name: params[:location_name]).id
@@ -118,7 +119,7 @@ post '/comments' do
   redirect '/login' unless logged_in?
 
   if params[:content] == ""
-    @error_msg = "You can't post an empty comment message." #doesn't really pop up..
+    # @error_msg = "You can't post an empty comment message." #doesn't really pop up..
     redirect "/activities/#{params[:activity_id]}"
     
     # erb :activity_details
@@ -234,8 +235,14 @@ get '/mytrip' do
   if existing_acts != []
      @location_id = @activities.find(existing_acts[0]).location_id
      @activity_ids = existing_acts
+    
   else
     @location_id = params[:location_id]  
+    
+    if params[:activity_ids].nil?
+      redirect '/randomtrip'
+    end
+
     str = params[:activity_ids].split(',')
     str[0] = str.first.sub('[','')
     str[str.count-1] = str.last.sub(']','')
@@ -255,6 +262,7 @@ end
 
 post '/mytrip' do
   redirect '/login' unless logged_in?
+
   @locations = Location.all
   @activities = Activity.all
   @location_id = params[:location_id]
@@ -295,28 +303,8 @@ get '/featured' do
   
 end
 
-# -----------------------
-
-#not working yet
-# get '/sortby' do 
-#   @activities = Activity.all
-#   @locations = Location.all
-
-#   likes = activities.likes.count
 
 
-#   if params[:popularity]
-#     @activities.order(likes: desc)
-#   elsif params[:recency]
-#     @activities.order(time_posted: desc)
-#   elsif params[:category]
-    
-#   else
-#     @activities.location(:location_id)
-#   end
-
-#   redirect '/activities'
-# end
 
 
 

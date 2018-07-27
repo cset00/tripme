@@ -3,7 +3,9 @@
 
 <div class="details-container">
     <div class="img-container">
-        <img class="act-img" src="<%= @activity.image_url %>" alt="">
+        
+            <img class="act-img" src="<%= @activity.image_url %>" alt="">
+        
         <div class="btns-left">
         <%# ---comments count--- %>
             <p class="grey"><%= @activity.comments.count %></p>
@@ -33,44 +35,49 @@
     <div class="text">
         <p> <%= @activity.summary %> </p>
         <small>Posted on <%= DateTime.strptime("#{@activity.time_posted}",'%s') %></small>
-        <div class="btns">
-            <%# ---edit / delete--- %>
-            <div class="btn-edit">
-                <a href="/activities/<%=@activity.id %>/edit">edit</a>
+        
+        <% if logged_in? && @activity.was_created_by(current_user) %>
+            <div class="btns">
+                <%# ---edit / delete--- %>
+                <div class="btn-edit">
+                    <a href="/activities/<%=@activity.id %>/edit">edit</a>
+                </div>
+                
+                <form action="/activities/<%= @activity.id %>" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="btn-delete">delete</button>
+                </form>
             </div>
-            
-            <form action="/activities/<%= @activity.id %>" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <button class="btn-delete">delete</button>
-            </form>
-        </div>
+        <% end %>
     </div>
 </div>
 
             
-    
-<h4>Comments</h4>
-<%# ---comments--- %>
-    <div>
-        <% @comments.each do |comment|  %>
-            <p><%=comment.content %></p>
-            <small>posted by <%= comment.user.username %> on <%= comment.time_posted %></small>
-        <% end %>
+<div class="center">  
+    <h4>Comments</h4>
+    <%# ---comments--- %>
+    <% if logged_in? %>
+        <div>
+            <% @comments.each do |comment|  %>
+                <p class="comment-text"><%=comment.content %></p>
+                <small>posted by <%= comment.user.username %> on <%= DateTime.strptime("#{comment.time_posted}",'%s') %></small>
+            <% end %>
         
-        <p class="error"><%= @error_msg %></p>
 
-        <div class="center">
-            <form action="/comments" method="post">
-                <input type="hidden" name="activity_id" value="<%= @activity.id %>">
-                <%# <p><label for="">content:</label></p> %>
-                <textarea name="content"></textarea>
-                <button class="btn-submit2">post comment</button>
-            </form>
+            <div class="center">
+                <form action="/comments" method="post">
+                    <input type="hidden" name="activity_id" value="<%= @activity.id %>">
+                    <textarea name="content"></textarea>
+                    <button class="btn-submit2">post comment</button>
+                </form>
+            </div>
         </div>
-
-        
-    </div>
-
+    <% else %>
+        <div>
+            <p class="grey">Login / sign-up to post comments</p>
+        </div>
+    <% end %>
+</div> 
 
 
 

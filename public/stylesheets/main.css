@@ -277,8 +277,7 @@ small {
 }
 
 .text {
-    padding: 20px;
-    padding-top: 0px;
+    padding: 0px 20px;
     width: 45%;
     color: #5000FF;
     line-height: 1.8;
@@ -305,6 +304,8 @@ small {
     margin-top: 5px;
 }
 
+
+
 .btns-right {
     display: flex;
     justify-content: flex-start;
@@ -323,4 +324,197 @@ small {
 
 .grey {
     color: grey;
+}
+
+.center {
+    margin-top: 20px;
+}
+
+.temp {
+    height: 170px;
+    overflow: hidden;
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    
+    button {
+        background-color: white;
+    }
+
+    nav {
+        font-size: 2.5em;
+    }
+
+    .user {
+        margin-top: 20px;
+    }
+
+    .icons {
+        width: 80px;
+    }
+
+    .btn-user {
+        font-size: 1.5em;
+        /* width: 100px;
+        margin-top: 10px; */
+    }
+
+    p {
+        font-size: 2em;
+    }
+
+    h1 {
+        font-size: 4.5em;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 2.1em;
+        text-align: center;
+    }
+
+    h4 {
+        margin-top: 10px;
+        font-size: 3em;
+    }
+
+    .details-container {
+        text-align: center;
+    }
+
+    .img-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .text {
+         margin: 0 auto;
+         width: 80%;
+         font-size: 1.3em;
+    }
+
+    small {
+         font-size: .5em;
+    }
+
+    label {
+        font-size: 2.3em;
+        
+    }
+
+    input {
+        height: 50px;
+        width: 300px;
+        padding-left: 20px;
+        margin-bottom: 30px;
+        font-size: 1.8em;
+    }
+
+    select {
+        height: 50px;
+        width: 200px;
+        font-size: 1.8em;
+        padding-left: 10px;
+    }
+
+    .center {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    textarea {
+        height: 70px;
+        width: 400px;
+    }
+
+    .signup {
+        margin-top: 40px;
+    }
+
+    .btn-submit, .btn-try {
+        font-size: 2.1em;
+        width: 200px;
+        height: 87px;
+    }
+
+    .btn-submit2 {
+        font-size: 1.9em;
+        width: 200px;
+        height: 87px;
+        vertical-align: top;
+        
+    }
+
+    footer {
+        height: 100px;
+    }
+
+    .btn-like, .liked, .comments {
+        width: 60px;
+        height: 60px;
+    }
+
+    .grey {
+        font-size: 2em;
+    }
+
+    .hero-container {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    .space-between {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .box-content {
+        height: 580px;
+        width: 100%;
+    }
+
+    .btn-yellow {
+        font-size: 2em;
+        width: 250px;
+        height: 70px;
+    }
+
+    .btn-delete {
+        width: 200px;
+        height: 70px;
+        font-size: 1.5em;
+        
+    }
+    
+    .btn-edit {
+        width: 200px;
+        height: 55px;
+        font-size: 1.5em;
+    }
+
+    .comment-text {
+        font-size: 1.5em;
+    }
+
+    .header2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .temp {
+        height: 400px;
+        overflow: hidden;
+    }
+
+
 }

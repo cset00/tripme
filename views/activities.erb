@@ -4,30 +4,37 @@
     <div class="btn-yellow">
         <a href="/activities/new">post new activity</a>
     </div>
-    <div class="sort-by">
-        <label for="">Sort by:</label>
-        <select name="sortby">
-            <option value="location">location</option>
-            <option value="popularity">popularity</option>
-            <option value="recency">most recent</option>
-            <option value="category">category</option>
-        </select>
-    </div>
+    <%# <div class="sort-by">
+        <form action="/sortby" method="post">
+            <label for="">Sort by:</label>
+            <select name="sortby">
+                <option value="location">location</option>
+                <option value="popularity">popularity</option>
+                <option value="recency">most recent</option>
+                <option value="category">category (coming soon)</option>
+            </select>
+        </form>
+    </div> %>
 </div>
 
 <div class="container">
     <% @activities.each do |activity| %>
         <div class="box-content">
-            <img class="tiles" src="<%= activity.image_url%>" alt="">
+            <div class="temp">
+                <img class="tiles" src="<%= activity.image_url%>" alt="">
+            </div>
+            
             <p> 
                 <a href="/activities/<%= activity.id%>"> 
                     <%=  activity.activity_name %> 
                 </a>
             </p>
             <p><%= @locations.find(activity.location_id).location_name %></p> 
-            
-            
+
+            <div>
+                
+            </div>
 
         </div>
     <% end %> 
- </div>
+</div>
