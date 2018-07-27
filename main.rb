@@ -1,6 +1,6 @@
      
 require 'sinatra'
-require 'sinatra/reloader' # only reloads this file by default
+# require 'sinatra/reloader' # only reloads this file by default
 # require 'pg'
 require 'pry'
 
