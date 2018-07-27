@@ -34,10 +34,7 @@ nav {
     justify-content: space-between;
 }
 
-body {
-    font-family: 'IBM Plex Sans Condensed', sans-serif;
-    color: #FE28A2;
-}
+
 
 .hero-container {
     text-align: center;
@@ -334,6 +331,38 @@ small {
     height: 170px;
     overflow: hidden;
 }
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    color: #FE28A2;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+footer {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+footer p {
+    color: grey;
+    font-size: 0.8em;
+    line-height: 1;
+}
+
+
+
+
+
+
 
 @media only screen 
   and (min-device-width: 375px) 

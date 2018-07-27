@@ -56,15 +56,15 @@
 <div class="center">  
     <h4>Comments</h4>
     <%# ---comments--- %>
-    <% if logged_in? %>
+    
         <div>
             <% @comments.each do |comment|  %>
                 <p class="comment-text"><%=comment.content %></p>
                 <small>posted by <%= comment.user.username %> on <%= DateTime.strptime("#{comment.time_posted}",'%s') %></small>
             <% end %>
-        
-
+    
             <div class="center">
+    <% if logged_in? %>
                 <form action="/comments" method="post">
                     <input type="hidden" name="activity_id" value="<%= @activity.id %>">
                     <textarea name="content"></textarea>

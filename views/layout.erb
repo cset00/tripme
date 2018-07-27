@@ -8,44 +8,48 @@
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <%# <li><a href="#">Featured trips</a></li> %>
-        <li><a href="/activities">All activities</a></li>
-        <li><a href="/mytrip">My trip</a></li>
-      </ul>
-    </nav>
-    
-    <div class="user">
-      <div class="icons">
-        <img src="/images/icons/user.png">
-      </div>
-      <% if logged_in? %>
-        <p>
-        logged in as <%=h current_user.username %>
-        </p>
-        <form action="/session" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <button class="btn-user">logout</button>
-        </form>
-      <% else %>
-        <form action="/login" method="get">
-          <button class="btn-user">login</button>
-        </form>
-        <form action="/signup" method="get">
-          <button class="btn-user">signup</button>
-        </form>
+  <div class="content">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <%# <li><a href="#">Featured trips</a></li> %>
+          <li><a href="/activities">All activities</a></li>
+          <li><a href="/mytrip">My trip</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user">
+        <div class="icons">
+          <img src="/images/icons/user.png">
+        </div>
+        <% if logged_in? %>
+          <p>
+          logged in as <%=h current_user.username %>
+          </p>
+          <form action="/session" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn-user">logout</button>
+          </form>
+        <% else %>
+          <form action="/login" method="get">
+            <button class="btn-user">login</button>
+          </form>
+          <form action="/signup" method="get">
+            <button class="btn-user">signup</button>
+          </form>
 
-      <% end %>
-    </div>
-  </header>
-  <main>
-    <%= yield %>
-  </main>
+        <% end %>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+  </div>
   <footer>
-  
+    <p>&copy 2018</p>
+    <p>Images and content are mostly taken from <a href="https://www.visitvictoria.com/">Visit Victoria </a></p>
+    <p>Icons are downloaded from <a href="https://www.flaticon.com/">flaticon.com</a> created by <a href="https://www.flaticon.com/authors/smashicons">smashicons</a>, <a href="https://www.flaticon.com/authors/catalin-fertu">catalin-fertu</a></p>
   </footer>
 </body>
 </html>
