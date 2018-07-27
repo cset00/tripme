@@ -24,6 +24,7 @@ Working features:
 - Logged in users can add an activity
 - Logged in users can edit or delete their own post
 - Users can like/unlike and comment on activities
+- Mobile friendly (for iphone 6 and up)
 - ... (adding more soon)
 
 
@@ -32,7 +33,12 @@ Additional nice-to-have features:
 - Pagination
 - Add categories / tags for the activities 
 - Sort results by most liked, distance fr melbourne, 
-- Fix the like/unlike button (when logged out, it defaults to a pink heart when it should only show a pink heart when you've liked the activity. )
+- Fix the like/unlike button (when logged out, it defaults to a pink heart when it should only show a pink heart when you've liked the activity.)
+- Users can upload an avatar
+- When users are prompted to login, after login, go back to the page where user was
+- Multiple images
+- Use an external API! 
+- Search function
 - ...
 
 
